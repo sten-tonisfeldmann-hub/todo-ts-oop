@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { Todo } from "../models/todo";
 
-export class TodosController {
+export class TodoController {
     private todos: Todo[] = [];
 
     createTodo = (req: Request, res: Response, next: NextFunction) => {
@@ -87,3 +87,5 @@ export class TodosController {
         }
     };
 }
+
+export default new TodoController();
