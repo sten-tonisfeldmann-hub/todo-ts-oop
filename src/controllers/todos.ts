@@ -19,8 +19,19 @@ export const createTodo = (req: Request, res: Response, next: NextFunction) => {
 
 export const getTodos = (req: Request, res: Response, next: NextFunction) => {
     try {
+        const todoId = req.params.id
+        const updatedTask = (req.body as {task: string}).task
+        const todoIndex = todos.findIndex(todo => todo.id === todoId)
+
+        if (todoindex < 0) {
+            throw new Error("Could not find todo with such id")
+        }
+
+        todos[todoIndex] = new Todo(todos[todoIndex].id, updatedTask)
+
         res.status(201).json({
-            tasks: todos
+            message: "Updated todo",
+            updatedTask: todos[todoIndex]
         })
     } catch (error) {
         console.log(error)
