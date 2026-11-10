@@ -1,11 +1,11 @@
 import express, {Request, Response, NextFunction} from "express";
-import { json } from "express";
-import todosRoutes from "./routes/todos.js";
+import { json } from "body-parser";
 
 const app = express();
 
 app.use(json());
-app.use("/todos", todosRoutes);
+
+app.use("/todos", todoRoutes);
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   res.json({ message: error.message });
